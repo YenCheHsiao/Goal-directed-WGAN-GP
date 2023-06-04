@@ -1,0 +1,2 @@
+Hi
+Create this file so the program can save data in this folder.
