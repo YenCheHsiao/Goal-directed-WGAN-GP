@@ -9,6 +9,11 @@ python -u 'Figures in paper/7. Load_My similarity 3.py' "$@"
 python -u 'Figures in paper/8. load learning data.py' "$@"
 python -u 'Figures in paper/9. dot_plot.py' "$@"
 
+# The main algorithm is in the 'Training/Goal-directed_WGAN-GP_retrain.py' line 701-720.
+# '(epoch 0) Goal-directed_WGAN-GP_retrain.py' to '(epoch 1000) Goal-directed_WGAN-GP_retrain.py' also have the algorithm.
+
+# If you are interested in retraining the generator and getting new results, please run the codes below.
+
 # Retrain the Goal-directed WGAN-GP with 0,20,40,60,80,100, and 1000 epochs
 mkdir -p '../results/Goal-directed_WGAN-GP/epoch0'
 python -u 'Training/(epoch 0) Goal-directed_WGAN-GP_retrain.py' "$@"
