@@ -1,0 +1,46 @@
+#!/usr/bin/env bash
+set -ex
+
+# This is the master script for the capsule. When you click "Reproducible Run", the code in this file will execute.
+# Generate the figures in the paper
+python -u 'Figures in paper/5. Number of immunogenic epitopes.py' "$@"
+python -u 'Figures in paper/6. IC50_compare.py' "$@"
+python -u 'Figures in paper/7. Load_My similarity 3.py' "$@"
+python -u 'Figures in paper/8. load learning data.py' "$@"
+python -u 'Figures in paper/9. dot_plot.py' "$@"
+
+# Retrain the Goal-directed WGAN-GP with 0,20,40,60,80,100, and 1000 epochs
+mkdir -p '../results/Goal-directed_WGAN-GP/epoch0'
+python -u 'Training/(epoch 0) Goal-directed_WGAN-GP_retrain.py' "$@"
+mkdir -p '../results/Goal-directed_WGAN-GP/epoch20'
+python -u 'Training/(epoch 20) Goal-directed_WGAN-GP_retrain.py' "$@"
+mkdir -p '../results/Goal-directed_WGAN-GP/epoch40'
+python -u 'Training/(epoch 40) Goal-directed_WGAN-GP_retrain.py' "$@"
+mkdir -p '../results/Goal-directed_WGAN-GP/epoch60'
+python -u 'Training/(epoch 60) Goal-directed_WGAN-GP_retrain.py' "$@"
+mkdir -p '../results/Goal-directed_WGAN-GP/epoch80'
+python -u 'Training/(epoch 80) Goal-directed_WGAN-GP_retrain.py' "$@"
+mkdir -p '../results/Goal-directed_WGAN-GP/epoch100'
+python -u 'Training/(epoch 100) Goal-directed_WGAN-GP_retrain.py' "$@"
+mkdir -p '../results/Goal-directed_WGAN-GP/epoch1000'
+python -u 'Training/(epoch 1000) Goal-directed_WGAN-GP_retrain.py' "$@"
+
+# Retrain the vanilla WGAN-GP with 1000 epochs
+mkdir -p '../results/WGAN-GP/epoch1000'
+python -u 'Training/WGAN-GP_retrain.py'
+
+# Generate the figures except for the binding affinity (BA), since BA needs to input the generated peptides from the output in "2. (all) Remove_placeholder_morethan2.py" (..._rmv.txt) to NetMHCpan - 4.1 at https://services.healthtech.dtu.dk/services/NetMHCpan-4.1/, download the predicted BA, save the file into a CSV file, run IC50_compare.py to get the comparison.
+python -u 'Reproduced figures/1. (all) GAN+CNN (no label)-generator data for scoring.py' "$@"
+python -u 'Reproduced figures/2. (all) Remove_placeholder_morethan2.py' "$@"
+python -u 'Reproduced figures/3. (all) GAN+CNN (no label)-scoring from file.py' "$@"
+python -u 'Reproduced figures/4. (all) My similarity.py' "$@"
+python -u 'Reproduced figures/5. (all) Number of immunogenic epitopes.py' "$@"
+python -u 'Reproduced figures/7. Load_My similarity 3.py' "$@"
+python -u 'Reproduced figures/8. load learning data.py' "$@"
+python -u 'Reproduced figures/9. dot_plot.py' "$@"
+
+
+# The previous version of this file was commented-out and follows below:
+# mkdir -p '../results/Goal-directed_WGAN-GP/epoch0'
+# python -u 'Training/(epoch 0) Goal-directed_WGAN-GP_retrain.py' "$@"
+# python -u 'Reproduced figures/1. GAN+CNN (no label)-generator data for scoring.py' "$@"
