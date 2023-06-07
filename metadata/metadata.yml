@@ -1,2 +1,29 @@
 metadata_version: 1
 name: Goal-directed WGAN-GP by Yen-Che Hsiao
+description: "The capsule contains all the codes and data I used for developing the
+  Goal-directed WGAN-GP. \n\nIn the run file, it will first generate the sub-figures
+  in Figure 2 in my manuscript. I used the peptides generated from the GAN we trained
+  offline. This part of the code will just take these peptides and generate the figures.
+  The figures are stored in the result file. The next part of the script in the run
+  file will train our Goal-directed WGAN-GP with 1000epochs and generate 10000 peptide
+  sequences, remove sequences with more than 2 placeholders, and calculate the immunogenicity
+  using DeepImmuno CNN. The predicted immunogenicity for each peptide sequences is
+  stored in deepimmuno-Goal-directed_WGAN-GP-bladder_cancer-scored_epoch1000-batch10000.txt
+  under the result file. \n\nTo regenerate all the result in the paper, you can uncomment
+  and run the code after line 25 in the run file. This part of the script will first
+  train our Goal-directed WGAN-GP with 0,20,40,60,80,100,1000epochs and WGAN-GP with
+  1000epochs. Next, it will generate the figures in Figure 2 in the manuscript except
+  for calculating the binding affinity (IC50) Fig2 (d) and (e), since the binding
+  affinity requires the user needs to manually copy paste the generated peptides in
+  the text file and paste them on the NetMHCpan-4.1:https://services.healthtech.dtu.dk/services/NetMHCpan-4.1/.
+  We couldn't do that automatically in this platform. I didn't run this part of the
+  code because of the limitation of the runtime. It requires roughly a a day to finish
+  it. If you encounter any bug in the code or have any questions, please feel free
+  to contact me.\nby Yen-Che Hsiao"
+authors:
+- name: Yen-Che Hsiao
+  affiliations:
+  - name: University of Connecticut
+- name: Abhishek Dutta
+  affiliations:
+  - name: University of Connecticut
