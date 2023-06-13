@@ -1,5 +1,5 @@
 # Goal-directed-Wasserstein Generative Adversarial Networks (WGAN) with Gradient penalty(GP)
-* The manuscript for the code is submitted to "Nature Machine Intelligence" for potential publication.
+* The manuscript for the code is submitted to a journal for potential publication.
 * The preprint of the manuscript can be found at:
   * Yen-Che Hsiao, Abhishek Dutta. Epitope Generation for Peptide-based Cancer Vaccine using Goal-directed Wasserstein Generative Adversarial Network with Gradient Penalty, 07 June 2023, PREPRINT (Version 1) available at Research Square [https://doi.org/10.21203/rs.3.rs-3015960/v1]
 * To reproduce the figures or to retrain our model, please see the run file in the code folder.
